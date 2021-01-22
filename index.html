@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Poker Control bar</title>
+    <link rel="stylesheet" href="custom.css">
+</head>
+<body>
+    <section class="main_sec">
+        <div class="main_wrapper">
+            <!-- nav tabs -->
+            <nav class="tabs">
+                <ul>
+                    <li><a href="#tab1" class="active">Game</a></li>
+                    <li><a href="#tab2">Shapes</a></li>
+                </ul>
+            </nav>
+            <div class="accordian_wrapper active tab_item" id="tab1" data-title="Tab 1">
+                <!-- game data inputs -->
+                <div class="accordian_inner">
+                    <div class="accordian_title">Game Data</div>
+                    <div class="accordian_body">
+                        <form class="game_form" id="form">
+                            <!-- Table/simulation name -->
+                            <div class="inner_row">
+                                <div class="head">Table Name:</div>
+                                <div class="form_group form_row">
+                                    <div class="form_td">
+                                        <input type="text" name="table_name" />
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- game data -->
+                            <div class="inner_row top_row">
+                                <div class="head">Table Data:</div>
+                                <div class="form_data">
+                                    <div class="form_group">
+                                        <label for="">SB</label>
+                                        <input type="number" min=1 name="small_blind" id="sbInput" onkeypress="return event.charCode >= 48"/>
+                                    </div>
+                                    <div class="form_group">
+                                        <label for="">BB</label>
+                                        <input type="number" min=1 name="big_blind" id="bbInput" onkeypress="return event.charCode >= 48"/>
+                                    </div>
+                                </div>
+                            </div>
+                             
+                            <!-- Choose dealer position -->
+                            <div class="inner_row">
+                                <div class="head">Choose Dealer Position</div>
+                                <div class="form_group form_row">
+                                    <div class="form_td">
+                                        <select id="dealerPosition" class="form-control">
+                                            <!-- <option>Select Number</option> -->
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Player data -->
+                            <div class="inner_row player_row">
+                                <div class="head">Player Data:</div>
+                                <div class="form_data" id="player_data">
+                                    <div class="form_title form_row">
+                                        <div class="title">Player Name</div>
+                                        <div class="title">Player Seat</div>
+                                        <div class="title">Chips</div>
+                                        <div class="title">Cards</div>
+                                        <div class="title">Action</div>
+                                    </div>
+                                    <div class="form_group form_row">
+                                        <div class="form_td">
+                                            <input type="text" name="player_name" id="player_name_1" value="player 1"/>
+                                        </div>
+                                        <div class="form_td">
+                                            <input type="number" name="player_seat" id="player_seat_1" value="1"/>
+                                        </div>
+                                        <div class="form_td">
+                                            <input type="number" name="player_chips" id="player_chips_1" />
+                                        </div>
+                                        <div class="form_td">
+                                            <input type="text" name="player_cards" id="player_cards_1" />
+                                        </div>
+                                    </div>
+                                    <div class="form_group form_row">
+                                        <div class="form_td">
+                                            <input type="text" name="player_name" id="player_name_2" value="player 2"/>
+                                        </div>
+                                        <div class="form_td">
+                                            <input type="number" name="player_seat" id="player_seat_2" value="2"/>
+                                        </div>
+                                        <div class="form_td">
+                                            <input type="number" name="player_chips" id="player_chips_2" />
+                                        </div>
+                                        <div class="form_td">
+                                            <input type="text" name="player_cards" id="player_cards_2" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <button id="addPlayer" type="button" class="btn">Add Player</button> 
+                                <button id="next_state" type="button" class="btn btn-success next_state">Next</button>
+                            </div>
+                        <!-- <button type="button" class="btn submit_btn">Submit</button> -->
+                        </form>
+                    </div>
+                </div>
+                <!-- Pre flop action -->
+                <div class="accordian_inner">
+                    <div class="accordian_title">Pre-Flop</div>
+                    <div class="accordian_body">
+                        <div class="inner_row">
+                            <div class="form_data player_data">
+                                <!-- <div class="form_title form_row">
+                                    <div class="title">Player Name</div>
+                                    <div class="title">Action</div>
+                                </div> -->
+                                <!-- Player name data comes here -->
+                            </div>
+                            <button id="next_state" type="button" class="btn btn-success next_state">Next</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Flop action -->
+                <div class="accordian_inner">
+                    <div class="accordian_title">Flop</div>
+                    <div class="accordian_body">
+                        <!-- Table card -->
+                        <div class="inner_row">
+                            <div class="form_group form_row">
+                                <div class="form_td">
+                                    <label for="coupon_field">Table Cards:</label>
+                                    <input type="number" name="table_card" id="table_card" />
+                                </div>
+                            </div>
+                            <div class="form_data player_data">
+                                <div class="form_title form_row">
+                                    <div class="title">Player Name</div>
+                                    <div class="title">Action</div>
+                                </div>
+                                <!-- Player name data comes here -->
+                            </div>
+                            <button id="next_state" type="button" class="btn btn-success next_state">Next</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Turn action-->
+                <div class="accordian_inner">
+                    <div class="accordian_title">Turn</div>
+                    <div class="accordian_body">
+                        flop sec
+                    </div>
+                </div>
+                <!-- River action-->
+                <div class="accordian_inner">
+                    <div class="accordian_title">River</div>
+                    <div class="accordian_body">
+                        flop sec
+                    </div>
+                </div>
+            </div>
+            <!-- canvas shapes -->
+            <div class="action_shape tab_item" id="tab2" data-title="Tab 2">
+                canvas shape
+                <img src="Geometric-Shapes-Names.jpg" />
+            </div>
+        </div>
+    </section>
+    <!-- modal -popup -->
+    <div class="modal-wrapper">
+        <div class="modal">
+            <div class="modal-title">Ipsum</div>
+            <div class="modal-body">
+                <div class="modal-message">
+                    <p></p>
+                </div>
+                <button class="btn btn-danger close-modal">Close</button>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="custom.js"></script>
+</body>
+</html>
