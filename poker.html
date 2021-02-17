@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Popup</title>
+</head>
+<body>
+
+    <h1>Hello there, i'm an iframe</h1>
+    <p>Send Message: <button id="message_button">Hi parent</button></p>
+    <p>Got Message:</p>
+    <div id="results"></div>
+    
+    <script>
+        var sendMessage = function (msg) {
+            // Make sure you are sending a string, and to stringify JSON
+            window.parent.postMessage(msg, '*');
+        };
+
+        var results = document.getElementById('results'),
+        messageButton = document.getElementById('message_button');
+
+        //Listen to message from child window
+        window.addEventListener('message', function(e){
+            results.innerHTML = e.data;
+        })
+
+        // Send random messge data on every button click
+        messageButton.addEventListener('click', function(){
+            var random = Math.random();
+            sendMessage('' + random);
+        })
+    </script>
+</body>
+</html>

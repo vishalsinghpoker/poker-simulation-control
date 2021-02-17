@@ -179,7 +179,35 @@
             </div>
         </div>
     </div>
+    <!-- parent -->
+    <p>Send Message: <button id="message_button">Hi there iframe</button></p>
+    <p>Got Message:</p>
+    <div id="results"></div>
+    <!-- iframe -->
+    <iframe src="poker.html" id="the_iframe"></iframe>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="custom.js"></script>
+    <script type="text/javascript">
+       
+       // Send a message to the child iframe
+        var iframeEl = document.getElementById('the_iframe'),
+        messageButton = document.getElementById('message_button'),
+        results = document.getElementById('results');
+
+        // Send a message to the child iframe
+        var sendMessage = function(msg) {
+            // Make sure you are sending a string, and to stringify JSON
+            iframeEl.contentWindow.postMessage(msg, '*');
+        };
+        // Send random messge data on every button click
+        messageButton.addEventListener('click', function(){
+            var random = Math.random();
+            sendMessage('' + random);
+        })
+        //Listen to message from child window
+        window.addEventListener('message', function(e){
+            results.innerHTML = e.data;
+        })
+    </script>
 </body>
 </html>
